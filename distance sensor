@@ -1,0 +1,69 @@
+int emisie = 3;
+
+int receptie = 3; 
+
+void setup() {
+
+  Serial.begin(9600);
+
+  pinMode(emisie, OUTPUT); // unda emisă = trigPin
+
+  pinMode(receptie, INPUT); // unda recepţionaţă = echoPin
+
+}
+
+ 
+
+void loop() {
+
+ 
+
+  float durata, distanta;  // float pentru valoare cu zecimală sau long pentru nr.întreg
+
+ 
+
+  //secvenţa iniţială
+
+  digitalWrite(emisie, LOW);
+
+  delayMicroseconds(2);
+
+  digitalWrite(emisie, HIGH);
+
+  delayMicroseconds(10);
+
+  
+
+   //se emite o undă
+
+   durata = pulseIn(receptie, HIGH); 
+
+ 
+
+   //se calculează distanţa cunoscănd viteza de propagare a undei emise
+
+   distanta=(durata/2)/29.1;
+
+  
+
+    if(distanta>=200||distanta<=0){
+
+      //pentru distanţă necorespunzătoare afişăm un mesaj de eroare
+
+      Serial.println("In afara distantei de masurare!");
+
+    }else{
+
+      //afişăm distanta măsurată
+
+      Serial.print("distanta = ");
+
+      Serial.print(distanta);
+
+      Serial.println();
+
+    }   
+
+  delay(500);
+
+}
