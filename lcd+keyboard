@@ -70,9 +70,7 @@ void loop(){
         }
 
           if (pozitia1 == 3 && pozitia2 == 3){
-                                 
-
-   
+          
     lcd.setCursor(0,0);
     lcd.print("472");
     lcd.setCursor(0,1);
@@ -82,10 +80,7 @@ void loop(){
 
   delay(100);
   if (pozitia1 != 3 && pozitia2 != 3){
-                                 
-
-   
-    
+  
     lcd.setCursor(0,1);
     lcd.print("cod incorect");
     digitalWrite(10,0);
