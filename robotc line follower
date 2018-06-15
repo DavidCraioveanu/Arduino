@@ -1,0 +1,52 @@
+Task main()
+{
+int mValue = 30; // Motor power
+int dValue =15; //Motor power
+int threshold =50; //Light sensorthreshold
+
+
+while(SensorValue(LightSensor)>threshold) //while light sensor is seeing"white"
+{
+motor[motorD]=dValue;  //Motor D is run at a 15 power level
+motor[motorE]=dValue;  //Motor E is run at a 15 power level
+
+}
+
+motor[motorD]=0;
+
+motor[motorE]=0;
+
+wait1Msec(500);
+
+while(SensorValue(LightSensor)<threshold)  //while light sensor is seeing "black"
+{
+motor[motorD] = mValue;
+
+motor[motorE]=mValue*(-1);   // Motor E is run at a 30 power level in the reverse direction
+}
+
+motor[motorD]=0;
+motor[motorE]=0;
+
+
+while(true)
+{
+if(SensorValue[LightSensor]<threshold)  //If the Light Sensor reads a value less than 50
+{
+motor[motorD]=mValue;
+
+motor[motorE]=0;
+
+}
+
+else     // If the Light Sensor reads a value greater than or equal to 50
+{
+motor[motorE]=mValue;
+
+motor[motorD]=0;
+
+       }
+   }
+}
+
+
