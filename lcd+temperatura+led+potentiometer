@@ -1,0 +1,72 @@
+ int a,b;
+ #include <Wire.h>
+#include <LiquidCrystal_I2C.h> 
+
+
+
+LiquidCrystal_I2C lcd(0x27,16,2); 
+   
+    void setup() {
+       pinMode(A1,INPUT);
+      pinMode(9,OUTPUT);
+      pinMode(8,OUTPUT);
+      pinMode(A0,INPUT); 
+      Serial.begin(9600);
+      digitalWrite(8,1);
+    }
+  
+   void loop() {
+      a = analogRead(A0);
+      b = a/5;
+      analogWrite(9,b);
+      Serial.println(b);
+      delay(10);
+      
+     
+    
+    float citire;
+
+  float tensiune=0;
+
+  float temperatura=0;
+
+  int contor=10;
+
+  float tmedie=0;
+
+  float rezultat=0;
+
+     for(int i=0;i<=contor;i++){
+
+     citire = analogRead(A1);
+
+    
+      
+
+    }
+
+    Serial.println(temperatura);
+
+ delay(500);
+ 
+ 
+  lcd.init();                    
+
+    lcd.backlight();
+
+    lcd.setCursor(0,0);
+
+    lcd.print(b);
+
+    lcd.setCursor(0,1);
+
+    lcd.print(temperatura);
+    
+    if(temperatura<26){
+      digitalWrite(8,1);}else
+      if(  temperatura>33){
+             digitalWrite(8,0);
+                    }
+        
+    
+    }
